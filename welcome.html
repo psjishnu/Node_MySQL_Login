@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HEY DUDE!!!!</title>
+    <script type = "text/javascript" >
+      function preventBack(){window.history.forward();}
+       setTimeout("preventBack()", 0);
+       window.onunload=function(){null};
+   </script>
+    <style>
+      #wel{
+        font-size: 80px;
+        font-weight: bolder;
+        text-align: center;
+        color: darkred;
+      }
+      body{
+    background: #8293ee;
+    width:100%;
+    height:100%;
+    color:black;
+    font-weight:bold;
+    animation: myanimation 3s infinite;
+}
+
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 250px;
+}
+img:hover {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
+#text {
+    text-shadow: 3px 6px 3px rgba(0,0,0,.1);
+    font-size: 100px;
+    font-variant: small-caps;
+    font-family: "Times New Roman", Times, serif;
+    color: #F3661C;
+    text-align: center;
+  }
+  
+  #text i {
+    position: relative;
+    top: 10px;
+    font-style: normal;
+    -webkit-animation: bounce 1s ease infinite alternate;
+    -moz-animation: bounce 1s ease infinite alternate;
+    animation: bounce 1s ease infinite alternate;
+  }
+  
+  #text i:nth-child(1) {
+    -moz-animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+    animation-delay: .2s;
+    color:black;
+  }
+  #text i:nth-child(2) {
+    -moz-animation-delay: .4s;
+    -webkit-animation-delay: .4s;
+    animation-delay: .4s;
+    color: black;
+  }
+  #text i:nth-child(3) {
+    -moz-animation-delay: .6s;
+    -webkit-animation-delay: .6s;
+    animation-delay: .6s;
+    color: red;
+  }
+  #text i:nth-child(4) {
+    -moz-animation-delay: .8s;
+    -webkit-animation-delay: .8s;
+    animation-delay: .8s;
+    color: black;
+  }
+  #text i:nth-child(5) {
+    -moz-animation-delay: 1s;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+    color: darkblue;
+  }
+  #text i:nth-child(6) {
+    -moz-animation-delay: 1.2s;
+    -webkit-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+    color: black;
+  }
+  #text i:nth-child(7) {
+    -moz-animation-delay: 1.4s;
+    -webkit-animation-delay: 1.4s;
+    animation-delay: 1.4s;
+    color:black;
+  }
+ 
+  
+  @keyframes bounce { 100% { top: -10px; } }
+  @-webkit-keyframes bounce { 100% { top: -10px; } }
+  @-moz-keyframes bounce { 100% { top: -10px; } }
+
+  
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }1
+  }
+  .container .btn {
+  position: absolute;
+  right: 1em ;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: lightcyan;
+  color: black;
+  font-size: 16px;
+  padding: 16px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+.container .btn:hover {
+  background-color: black;
+  color: greenyellow;
+}
+
+  
+#main_sec{
+    margin: 0 auto;
+   
+}
+@keyframes myanimation {
+    0% {background-color: red;}
+    25%{background-color:yellow;}
+    50%{background-color:green;}
+    75%{background-color:cyan;}
+    100% {background-color:violet;}
+  }
+
+  @media screen and ( max-width: 90% ) {
+    img.avtar { max-width: 90%; }
+  }
+  
+  @media screen and (orientation: landscape) {
+    img.avtar { max-height: 90%; }
+  }
+    </style>
+</head>
+<body>
+  <div  class="container">
+    <button class="btn"  onclick="window.location.href = '\\';">Logout</button>
+  </div>
+  
+    <h1 id="wel">WELCOME</h1>
+    <div id="main_sec">
+            <img class="avtar" src="user-avatar.jpg" alt="">
+            <div id="title_wrapper">
+                <div id="text">
+                  <div id="wow">
+                </div>
+              </div>
+    </div>
+</body>
+</html>
