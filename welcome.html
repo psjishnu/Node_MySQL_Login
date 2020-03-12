@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HEY DUDE!!!!</title>
+    <title>Welcome to vote</title>
     <script type = "text/javascript" >
       function preventBack(){window.history.forward();}
        setTimeout("preventBack()", 0);
        window.onunload=function(){null};
    </script>
     <style>
+
+
       #wel{
         font-size: 80px;
         font-weight: bolder;
@@ -23,7 +25,9 @@
     height:100%;
     color:black;
     font-weight:bold;
-    animation: myanimation 3s infinite;
+    text-align: center;
+    align-items: center;  
+   /* animation: myanimation 25s infinite;*/
 }
 
 
@@ -39,83 +43,14 @@ img:hover {
 }
 #text {
     text-shadow: 3px 6px 3px rgba(0,0,0,.1);
-    font-size: 100px;
+    font-size: 50px;
     font-variant: small-caps;
     font-family: "Times New Roman", Times, serif;
-    color: #F3661C;
+    color:darkmagenta;
     text-align: center;
   }
-  
-  #text i {
-    position: relative;
-    top: 10px;
-    font-style: normal;
-    -webkit-animation: bounce 1s ease infinite alternate;
-    -moz-animation: bounce 1s ease infinite alternate;
-    animation: bounce 1s ease infinite alternate;
-  }
-  
-  #text i:nth-child(1) {
-    -moz-animation-delay: .2s;
-    -webkit-animation-delay: .2s;
-    animation-delay: .2s;
-    color:black;
-  }
-  #text i:nth-child(2) {
-    -moz-animation-delay: .4s;
-    -webkit-animation-delay: .4s;
-    animation-delay: .4s;
-    color: black;
-  }
-  #text i:nth-child(3) {
-    -moz-animation-delay: .6s;
-    -webkit-animation-delay: .6s;
-    animation-delay: .6s;
-    color: red;
-  }
-  #text i:nth-child(4) {
-    -moz-animation-delay: .8s;
-    -webkit-animation-delay: .8s;
-    animation-delay: .8s;
-    color: black;
-  }
-  #text i:nth-child(5) {
-    -moz-animation-delay: 1s;
-    -webkit-animation-delay: 1s;
-    animation-delay: 1s;
-    color: darkblue;
-  }
-  #text i:nth-child(6) {
-    -moz-animation-delay: 1.2s;
-    -webkit-animation-delay: 1.2s;
-    animation-delay: 1.2s;
-    color: black;
-  }
-  #text i:nth-child(7) {
-    -moz-animation-delay: 1.4s;
-    -webkit-animation-delay: 1.4s;
-    animation-delay: 1.4s;
-    color:black;
-  }
- 
-  
-  @keyframes bounce { 100% { top: -10px; } }
-  @-webkit-keyframes bounce { 100% { top: -10px; } }
-  @-moz-keyframes bounce { 100% { top: -10px; } }
-
-  
-  @keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }1
+  input[type='radio']{
+    transform: scale(2);
   }
   .container .btn {
   position: absolute;
@@ -135,14 +70,19 @@ img:hover {
   background-color: black;
   color: greenyellow;
 }
-
+#idx{
+  color: red;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
   
 #main_sec{
     margin: 0 auto;
    
 }
 @keyframes myanimation {
-    0% {background-color: red;}
+    50% {background-color: red;}
     25%{background-color:yellow;}
     50%{background-color:green;}
     75%{background-color:cyan;}
@@ -153,24 +93,58 @@ img:hover {
     img.avtar { max-width: 90%; }
   }
   
-  @media screen and (orientation: landscape) {
-    img.avtar { max-height: 90%; }
+  #form1{
+    align-self: center;
+    margin-top: 2em;
+    padding-top: 1em;
+    width: 500px;
+    background-color:greenyellow;
+    text-align: center ;
+    font-size: 35px;
+    font-weight: bolder;
+    margin-left: 35%;margin-right: 25%;padding-bottom: 10pt;
+
+    
   }
+#button2 {
+  background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+#button2:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
     </style>
 </head>
 <body>
   <div  class="container">
     <button class="btn"  onclick="window.location.href = '\\';">Logout</button>
   </div>
-  
+      <div >
     <h1 id="wel">WELCOME</h1>
-    <div id="main_sec">
-            <img class="avtar" src="user-avatar.jpg" alt="">
-            <div id="title_wrapper">
-                <div id="text">
-                  <div id="wow">
-                </div>
-              </div>
+    <div id="text">
+      <div id="wow">
     </div>
+    </div>
+    <div> 
+  <form action="\vote" method="POST" id="form1">
+    <p style="font-size: 25px;">Please choose an option</p>
+    <label>One <input type="radio" name="name" value="1" required="required"/></label><br>
+    <label>Two <input type="radio" name="name" value="2"/></label><br>
+    <label>Three <input type="radio" name="name" value="3"/></label><br>
+    <label>Four <input type="radio" name="name" value="4"/></label><br>
+    <input type="submit" name="submit" value="submit" id="button2">
+    <p id="idx" style="color: greenyellow;">.</p>
+  </form>
+  </div>
 </body>
 </html>
+
