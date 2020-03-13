@@ -299,6 +299,7 @@ app.get('/rollback',urlencodedParser,function(req,res){
   var k=JSON.stringify(jis,null,4);
   var obj=JSON.parse(k);len1=(obj.chain).length;
   con.query("SELECT name,v FROM vote", function (err, result,fields ){
+  
     for(i=1;i<len1;i++)
     { 
       for(j=0;j<result.length;j++)
@@ -312,8 +313,8 @@ app.get('/rollback',urlencodedParser,function(req,res){
           
          }
       }
-    }
-      htmladmin=htmladmin.replace("<p id=\"x1\"style=\"color:aquamarine;\">","<p id=\"x1\">VALUES IN DATABASE CORRECTED"); 
-      res.send(htmladmin);  
+    } 
   });
+  htmladmin=htmladmin.replace("<p id=\"x1\"style=\"color:aquamarine;\">","<p id=\"x1\">VALUES IN DATABASE CORRECTED"); 
+  res.send(htmladmin);
 });
