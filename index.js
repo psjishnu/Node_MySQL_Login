@@ -10,7 +10,8 @@ const SHA256 = require('crypto-js/sha256');
 const EC = require('elliptic').ec;
 const ec = new EC('secp256k1');
 var prid1="";
-var htmlnow="";
+var adname="admin";var adpass="admin";
+var htmlnow="";var htmladmin="";
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -228,6 +229,31 @@ app.post('/thank', urlencodedParser, function (req, res){
   var nn="";var np="";var ns="";
   var sql = "INSERT INTO customers (name, address) VALUES ('x1', 'x2')";
   nn=req.body.name;np=req.body.password;ns=req.body.submit;
+
+  if(nn==adname && np==adpass){
+    var len1,str2="",i=0;
+    var k=JSON.stringify(jis,null,4);
+    var obj=JSON.parse(k);len1=(obj.chain).length;
+    str2="<table id=\"list1\"><tr><th><b>name</b></th><th><b>vote</b> </th></tr>"
+    fs.readFile('admin.html','utf8',function(err,html){
+      if(err) throw err;
+      if(len1<2){
+        html=html.replace("<div id=\"list1\">","<div id=\"list1\">"+"No data");
+        res.send(html);
+      }else{
+      for(i=1;i<len1;i++)
+      {
+          str2=str2+"<tr><td>"+(obj.chain)[i].data+"</td><td>"+(obj.chain)[i].index+"</td></tr>";
+      }
+      html=html.replace("<div id=\"list1\">","<div>"+str2+"</table>");
+      console.log("son");
+      htmladmin=html;
+      res.send(html);}
+    });
+  }
+
+
+  else{
   con.query("SELECT name,address FROM customers", function (err, result,fields ) {
     if (err) throw err;
     var html='';str1='';var inn=0;var k;
@@ -242,8 +268,8 @@ app.post('/thank', urlencodedParser, function (req, res){
     }
     if(inn==1){
       fs.readFile('welcome.html', 'utf8', function(err,html){
-      if(err) throw err;  
-      html=html.replace("<div id=\"wow\">",str1);
+      if(err) throw err;
+      html=html.replace("<h1 id=\"wel\">","<h1 id=\"wel\">Logged in as "+nn);
       var z1=psntid(nn,html);
       res.send(html); });
     }
@@ -254,5 +280,30 @@ app.post('/thank', urlencodedParser, function (req, res){
         res.send(html);  
       });
     }
+  });}
+});
+
+app.get('/rollback',urlencodedParser,function(req,res){
+  var len1,str2="",i=0,j=0,sql="";
+  var k=JSON.stringify(jis,null,4);
+  var obj=JSON.parse(k);len1=(obj.chain).length;
+  con.query("SELECT name,v FROM vote", function (err, result,fields ){
+    for(i=1;i<len1;i++)
+    { console.log("eher");
+      for(j=0;j<result.length;j++)
+      { console.log("eher1");
+        if(result[j].name==(obj.chain)[i].data)
+         {
+           console.log("in");
+          sql="update vote set v=x1 where name=\"x2\"";
+          sql=sql.replace("x1",(obj.chain)[i].index);
+          sql=sql.replace("x2",result[j].name);
+          con.query(sql, function (err, result,fields ){});
+          
+         }
+      }
+    }
+      htmladmin=htmladmin.replace("<p id=\"x1\"style=\"color:aquamarine;\">","<p id=\"x1\">VALUES IN DATABASE CORRECTED"); 
+      res.send(htmladmin);  
   });
 });
