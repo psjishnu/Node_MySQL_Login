@@ -244,21 +244,31 @@ app.post('/thank', urlencodedParser, function (req, res){
   nn=req.body.name;np=req.body.password;ns=req.body.submit;
 
   if(nn==adname && np==adpass){
-    var len1,str2="",i=0;
+    var len1,str2="",i=0,c1=0,c2=0,c3=0,c4=0,str3="";
     var k=JSON.stringify(jis,null,4);
     var obj=JSON.parse(k);len1=(obj.chain).length;
-    str2="<table id=\"list1\"><tr><th>name</th><th>vote</th><th>time</th></tr>"
+    str2="<table id=\"list1\"><tr><th>name</th><th>vote</th><th>time</th></tr>";
+    str3="<table id=\"list2\"><tr><th colspan=2>RESULTS</th></tr>";
     fs.readFile('admin.html','utf8',function(err,html){
       if(err) throw err;
       if(len1<2){
-        html=html.replace("<div id=\"list1\">","<div id=\"list1\">"+"No data");
+        console.log("entha");
+        html=html.replace("<p id=\"x1\"style=\"color:aquamarine;\">.","<p id=\"x1\">No data");
         res.send(html);
       }else{
       for(i=1;i<len1;i++)
       {
           str2=str2+"<tr><td>"+(obj.chain)[i].data+"</td><td>"+(obj.chain)[i].index+"</td><td>"+(obj.chain)[i].timestamp+"</td></tr>";
+          if((obj.chain)[i].index == 1) c1++;
+          else if((obj.chain)[i].index == 2) c2++;
+          else if((obj.chain)[i].index == 3) c3++;
+          else if((obj.chain)[i].index == 4) c4++;
+          
       }
-      html=html.replace("<div id=\"list1\">","<div>"+str2+"</table>");
+      str3=str3+"<tr><td>1</td><td>"+c1+"</td></tr><tr><td>2</td><td>"+c2+"</td></tr>";
+      str3=str3+"<tr><td>3</td><td>"+c3+"</td></tr><tr><td>4</td><td>"+c4+"</td></tr>";
+      html=html.replace("<div id=\"list11\">",str2+"</table>");
+      html=html.replace("<div id=\"list21\">",str3+"</table>")
       htmladmin=html;
       res.send(html);}
     });

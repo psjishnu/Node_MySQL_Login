@@ -92,7 +92,10 @@ img:hover {
   @media screen and ( max-width: 90% ) {
     img.avtar { max-width: 90%; }
   }
-  
+  table{ 
+border-collapse:separate; 
+border-spacing: 0 15px; 
+}
   #form1{
     align-self: center;
     margin-top: 2em;
@@ -132,12 +135,12 @@ img:hover {
     </div>
     <div> 
   <form action="\vote" method="POST" id="form1">
-    <p style="font-size: 30px;">Please choose an option</p>
+    <p style="font-size: 30px;">Please choose a candidate</p>
     <label>One <input type="radio" name="name" value="1" required="required"/></label><br>
     <label>Two <input type="radio" name="name" value="2"/></label><br>
     <label>Three <input type="radio" name="name" value="3"/></label><br>
     <label>Four <input type="radio" name="name" value="4"/></label><br>
-    <input type="submit" name="submit" value="submit" id="button2">
+    <input type="submit" name="submit" value="VOTE" id="button2">
     <p id="idx" style="color: greenyellow;">.</p>
   </form>
   </div>
