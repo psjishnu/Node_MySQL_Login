@@ -24,6 +24,19 @@ function psntid(prid,htmlz){
    htmlnow=htmlz;
    return prid;
 }
+function Dategen(){
+  let date_ob = new Date();
+let date = ("0" + date_ob.getDate()).slice(-2);
+let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+let year = date_ob.getFullYear();
+let hours = date_ob.getHours();
+let minutes = date_ob.getMinutes();
+let seconds = date_ob.getSeconds();
+var dte="";
+dte= year+"-"+month+"-"+date+" "+hours+":"+minutes+":"+seconds;
+console.log(year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds);
+return dte;
+}
 class Block{
   constructor(index,timestamp ,data , previousHash= '')
   {
@@ -208,12 +221,12 @@ con.query("SELECT name,v FROM vote", function (err, result,fields ) {
 });
 function ins(ax){
   if(ax==0){
+    var p=Dategen();
     con.query(sql, function (err, result) {
       if (err) throw err;
       console.log("vote inserted");
     });
-    jis.addBlock(new Block(nn,"10/5/1999",prid1));
-   // jis.addBlock(new Block(2,"11/5/2099",{amount:5}));
+    jis.addBlock(new Block(nn,p,prid1));
       htmla=htmlnow.replace("<p id=\"idx\" style=\"color: greenyellow;\">.","<p id=\"idx\">VOTED SUCCESSSFULLY");
       res.send(htmla);
   }
@@ -234,7 +247,7 @@ app.post('/thank', urlencodedParser, function (req, res){
     var len1,str2="",i=0;
     var k=JSON.stringify(jis,null,4);
     var obj=JSON.parse(k);len1=(obj.chain).length;
-    str2="<table id=\"list1\"><tr><th><b>name</b></th><th><b>vote</b> </th></tr>"
+    str2="<table id=\"list1\"><tr><th>name</th><th>vote</th><th>time</th></tr>"
     fs.readFile('admin.html','utf8',function(err,html){
       if(err) throw err;
       if(len1<2){
@@ -243,10 +256,9 @@ app.post('/thank', urlencodedParser, function (req, res){
       }else{
       for(i=1;i<len1;i++)
       {
-          str2=str2+"<tr><td>"+(obj.chain)[i].data+"</td><td>"+(obj.chain)[i].index+"</td></tr>";
+          str2=str2+"<tr><td>"+(obj.chain)[i].data+"</td><td>"+(obj.chain)[i].index+"</td><td>"+(obj.chain)[i].timestamp+"</td></tr>";
       }
       html=html.replace("<div id=\"list1\">","<div>"+str2+"</table>");
-      console.log("son");
       htmladmin=html;
       res.send(html);}
     });
@@ -264,7 +276,6 @@ app.post('/thank', urlencodedParser, function (req, res){
             inn=1;
             break;
          }
-
     }
     if(inn==1){
       fs.readFile('welcome.html', 'utf8', function(err,html){
@@ -289,12 +300,11 @@ app.get('/rollback',urlencodedParser,function(req,res){
   var obj=JSON.parse(k);len1=(obj.chain).length;
   con.query("SELECT name,v FROM vote", function (err, result,fields ){
     for(i=1;i<len1;i++)
-    { console.log("eher");
+    { 
       for(j=0;j<result.length;j++)
-      { console.log("eher1");
+      { 
         if(result[j].name==(obj.chain)[i].data)
          {
-           console.log("in");
           sql="update vote set v=x1 where name=\"x2\"";
           sql=sql.replace("x1",(obj.chain)[i].index);
           sql=sql.replace("x2",result[j].name);
