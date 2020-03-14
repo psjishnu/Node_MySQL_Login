@@ -11,5 +11,5 @@
 4. Open a terminal in the root folder . 
 5. Run " node index.js " . 
 6. There is a crypto-js verification in the code . 
-7. To activate verification , create a table vote int the database by " create table vote (name varchar(100), v int)" ;
+7. To activate verification , create a table vote in the database by " create table vote (name varchar(100), v int)" ;
 8. The administrator name and password is "admin" .
