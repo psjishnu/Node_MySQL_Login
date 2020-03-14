@@ -55,12 +55,31 @@
   border-radius: 5px;
   text-align: center;
 }
+.container .btn3 {
+  position: absolute;
+  left: 15em ;
+  top:2.5em;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: whitesmoke;
+  color: black;
+  font-size: 17px;
+  padding: 16px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
 .container .btn1:hover {
   background-color: black;
   color: greenyellow;
 }
 .container .btn2:hover {
   background-color: black;
+  color: greenyellow;
+}
+.container .btn3:hover {
+  background-color: rgb(238, 14, 14);
   color: greenyellow;
 }
 #x1{
@@ -83,6 +102,7 @@
     <div  class="container">
         <button class="btn1"  onclick="window.location.href = '\\';">Logout</button>
         <button class="btn2"  onclick="window.location.href = '\\rollback';">Rollback</button>
+        <button class="btn3"  onclick="window.location.href = '\\clear';">REPOLL</button>
     </div>
     <h1 id="wel">Welcome Admin</h1>
     <p id="x1"style="color:aquamarine;">.</p>

@@ -10,7 +10,7 @@ const SHA256 = require('crypto-js/sha256');
 const EC = require('elliptic').ec;
 const ec = new EC('secp256k1');
 var prid1="";
-var adname="admin";var adpass="admin";
+var adname="admin";var adpass="admin"; // Credentials for entering admin page
 var htmlnow="";var htmladmin="";
 var con = mysql.createConnection({
   host: "localhost",
@@ -25,7 +25,7 @@ function psntid(prid,htmlz){
    return prid;
 }
 function Dategen(){
-  let date_ob = new Date();
+let date_ob = new Date();
 let date = ("0" + date_ob.getDate()).slice(-2);
 let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
 let year = date_ob.getFullYear();
@@ -252,8 +252,8 @@ app.post('/thank', urlencodedParser, function (req, res){
     fs.readFile('admin.html','utf8',function(err,html){
       if(err) throw err;
       if(len1<2){
-        console.log("entha");
-        html=html.replace("<p id=\"x1\"style=\"color:aquamarine;\">.","<p id=\"x1\">No data");
+        html=html.replace("<p id=\"x1\"style=\"color:aquamarine;\">.","<p id=\"x1\">NO DATA");
+        htmladmin=html;
         res.send(html);
       }else{
       for(i=1;i<len1;i++)
@@ -308,8 +308,8 @@ app.get('/rollback',urlencodedParser,function(req,res){
   var len1,str2="",i=0,j=0,sql="";
   var k=JSON.stringify(jis,null,4);
   var obj=JSON.parse(k);len1=(obj.chain).length;
+  if(len1>1){
   con.query("SELECT name,v FROM vote", function (err, result,fields ){
-  
     for(i=1;i<len1;i++)
     { 
       for(j=0;j<result.length;j++)
@@ -327,4 +327,18 @@ app.get('/rollback',urlencodedParser,function(req,res){
   });
   htmladmin=htmladmin.replace("<p id=\"x1\"style=\"color:aquamarine;\">","<p id=\"x1\">VALUES IN DATABASE CORRECTED"); 
   res.send(htmladmin);
+}
+  else{
+    htmladmin=htmladmin.replace("<p id=\"x1\">NO DATA","<p id=\"x1\">NOTHING IN DATABASE TO CORRECT!!");
+   res.send(htmladmin);
+
+  }
+});
+app.get('/clear',urlencodedParser,function(req,res){
+  jis=new Blockchain();
+  con.query("delete from vote", function (err, result,fields ){});
+  fs.readFile('new.html', 'utf8', function(err,html){
+    if(err) throw err;
+    res.send(html);
+  });
 });
